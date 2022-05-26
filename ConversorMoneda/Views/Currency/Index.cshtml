@@ -1,0 +1,40 @@
+﻿@model Application.ViewModels.CurrenciesViewModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="row justify-content-center text-white p-3 m-1 rounded-3 " style="background-color: #293462">
+    <form method="post" asp-controller="Currency" asp-action="Index" class="col-6">
+        <div class="mb-3">
+            <label asp-for="De" class="form-label">De:</label>
+            <select asp-for="De" class="form-select" aria-label="Default select example">
+                <option value="1">Pesos DOM</option>
+                <option selected value="2">Dolar USD</option>
+                <option value="3">Euro EUR</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label asp-for="A" class="form-label">A:</label>
+            <select asp-for="A" class="form-select" aria-label="Default select example">
+                <option value="1">Pesos DOM</option>
+                <option value="2">Dolar USD</option>
+                <option value="3">Euro EUR</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" asp-for="Cantidad">Cantidad:</label>
+            <input type="number" step="any" asp-for="Cantidad" class="form-control" min="1">
+        </div>
+        <div class="row justify-content-center">
+            <button type="submit" class="btn text-center text-white mb-3 col-sm-4" style="background-color: #242f9b">Convert</button>
+        </div>
+    </form>
+    @if (Model.ValorDivisa != 0)
+    {
+        <div class="card col-8" style="background-color: #205375">
+            <div class="card-body">
+                <h3 class="text-center">Resultado: $ @Model.ValorDivisa</h3>
+            </div>
+        </div>
+    }
+</div>
